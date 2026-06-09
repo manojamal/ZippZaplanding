@@ -825,7 +825,7 @@ export default function App() {
   return (
     <div
       style={THEME_VARIABLES[theme] as React.CSSProperties}
-      className={`theme-transition font-sans bg-[var(--bg)] text-[var(--text)] min-h-screen relative overflow-x-hidden`}
+      className={`theme-transition font-sans bg-[var(--bg)] text-[var(--text)] min-h-screen relative`}
     >
       {/* Dynamic Global Theme-Variable Smooth Transitions Embedding */}
       <style>{`
@@ -914,17 +914,7 @@ export default function App() {
         }
       `}</style>
 
-      {/* Floating Cultural Core Elements depending on Selected Theme */}
-      {theme === "northern" && (
-        <div className="absolute top-[15rem] right-[-10rem] w-[35rem] h-[35rem] pointer-events-none select-none z-0 opacity-15">
-          <ArewaKnot className="w-full h-full text-[var(--blue)]" />
-        </div>
-      )}
-      {theme === "southern" && (
-        <div className="absolute top-[15rem] right-[-10rem] w-[35rem] h-[35rem] pointer-events-none select-none z-0 opacity-15">
-          <CoralBeadOrb className="w-full h-full text-[var(--blue)]" />
-        </div>
-      )}
+
 
       {/* Toast Notification */}
       <div
@@ -1067,7 +1057,21 @@ export default function App() {
         </div>
       </nav>
 
-      {/* ── CENTRAL TRIPLE NIGERIAN CULTURAL REALM SELECTOR STRIP ─────────────────────── */}
+      {/* Scrollable Content Container to prevent overflow-x while allowing standard header sticky matching */}
+      <div className="overflow-x-hidden w-full relative">
+        {/* Floating Cultural Core Elements depending on Selected Theme */}
+        {theme === "northern" && (
+          <div className="absolute top-[15rem] right-[-10rem] w-[35rem] h-[35rem] pointer-events-none select-none z-0 opacity-15">
+            <ArewaKnot className="w-full h-full text-[var(--blue)]" />
+          </div>
+        )}
+        {theme === "southern" && (
+          <div className="absolute top-[15rem] right-[-10rem] w-[35rem] h-[35rem] pointer-events-none select-none z-0 opacity-15">
+            <CoralBeadOrb className="w-full h-full text-[var(--blue)]" />
+          </div>
+        )}
+
+        {/* ── CENTRAL TRIPLE NIGERIAN CULTURAL REALM SELECTOR STRIP ─────────────────────── */}
       <div className="bg-[var(--bg-soft)] border-b border-[var(--border)] py-4 px-6 relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -2197,6 +2201,7 @@ export default function App() {
           </div>
         </div>
       )}
+      </div>
 
       {/* Celebration Details Pop-Up Modal */}
       <AnimatePresence>
